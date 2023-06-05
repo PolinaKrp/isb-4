@@ -13,7 +13,7 @@ def graph_drawing(card: str) -> None:
     """
     times = np.empty(shape=0)
     card = card[:6]
-    items = [(i, card) for i in range(99999, 10000000)]
+    items = [(i, card) for i in range(1000000)]
     for i in range(1, 8):
         start = time.time()
         with mp.Pool(i) as p:

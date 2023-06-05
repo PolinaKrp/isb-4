@@ -3,14 +3,14 @@ import re
 import sys
 import time
 
+
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import (QApplication, QLabel, QMainWindow, QProgressBar,
                              QPushButton)
 
 from graph import graph_drawing
-from hashing import SETTING, algorithm_luna, check_hash
-
+from hashing import SETTING, algorithm_Luhn, check_hash
 
 class Window(QMainWindow):
     def __init__(self) -> None:
@@ -140,7 +140,7 @@ class Window(QMainWindow):
         self.progress.setValue(100)
         end = time.time() - start
         result_text = f'Decoded number: {result}\n'
-        result_text += f'Checking for the Luhn algorithm: {algorithm_luna(result)}\n'
+        result_text += f'Checking for the Luhn algorithm: {algorithm_Luhn(result)}\n'
         result_text += f'Time: {end:.2f} seconds'
         self.result.setText(result_text)
         self.graph.show()
