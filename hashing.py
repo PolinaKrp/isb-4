@@ -1,20 +1,16 @@
 import hashlib
 import logging
+from work_with_file import read_settings, write_settings
 
-SETTING = {
-    'hash': 'e5c92fb926ffc9976ad06b46cc7eb656158f07b6e41a1666e005c9cd',
-    'begin_digits': ["423078", '427401', '427414', '427415', '427421', '427423', '427424', '427429', '427434', '427435', '427437', '427443', '427447', '427448', '427457', '427458', '427464', '427465', '427471', '427473', '442198', '475794', '479583', '479586', '481778', '481781', '481782', '485463', '489798', '427601', '427901', '466765', '467455'],
-    'last_digits': '1217',
-}
 
 def check_hash(card_center: int, card_begin: int) -> int:
     """
     Hash check function
     """
     logging.info("Hash check")
-    card_number = f"{card_begin}{card_center}{SETTING['last_digits']}"
+    card_number = f"{card_begin}{card_center}{settings['last_digits']}"
     card_hash = hashlib.sha224(card_number.encode()).hexdigest()
-    if SETTING['hash'] == card_hash:
+    if settings['hash'] == card_hash:
         return card_number
     return False
 

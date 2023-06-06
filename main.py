@@ -10,7 +10,8 @@ from PyQt5.QtWidgets import (QApplication, QLabel, QMainWindow, QProgressBar,
                              QPushButton)
 
 from graph import graph_drawing
-from hashing import SETTING, algorithm_Luhn, check_hash
+from hashing import algorithm_Luhn, check_hash
+from work_with_file import read_settings, write_settings
 
 class Window(QMainWindow):
     def __init__(self) -> None:
@@ -57,7 +58,7 @@ class Window(QMainWindow):
         self.number.setStyleSheet("QComboBox{\n"
                                        "background-color: #CCCCFF;}\n"
                                        )
-        self.number.addItems(SETTING["begin_digits"])
+        self.number.addItems(settings["begin_digits"])
         self.number.setGeometry(290, 50, 200, 50)
         self.number.activated[str].connect(self.on_activated)
         self.graph = QPushButton('Build graph', self)
@@ -85,7 +86,7 @@ class Window(QMainWindow):
         try:
             self.number = int(re.findall('(\d+)', text)[0])
         except:
-            self.number = SETTING['begin_digits'][0]
+            self.number = settings['begin_digits'][0]
         self.pool_size.activated[str].connect(self.choose_pool)
 
     def choose_pool(self, text: str) -> None:

@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from hashing import check_hash
+from work_with_file import read_settings, write_settings
 
 
 def graph_drawing(card: str) -> None:
